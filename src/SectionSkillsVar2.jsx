@@ -19,7 +19,7 @@ const Grid = styled.div`
   grid-auto-rows: 1fr;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto auto;
-  /* gap: 2rem; */
+  gap: 1rem;
   grid-template-areas:
     '.'
     '.'
@@ -36,9 +36,6 @@ const GridItemR = styled.div`
   z-index: 1;
 
   background-color: rgb(0 0 0 / 0%);
-  border-radius: 1.5rem;
-
-  background-color: rgb(18 14 14 / 71%);
 
   /* box-shadow: rgb(99 99 99 / 20%) 0px 0px 11px 0px; */
 
@@ -53,7 +50,7 @@ const GridItemR = styled.div`
     margin: -1px;
     pointer-events: none;
     content: '';
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    /* border: 1.5px solid rgba(255, 255, 255, 0.12); */
     border-radius: inherit;
     /* mask-image: linear-gradient(135deg, #fff 0%, transparent 50%); */
   }
@@ -63,7 +60,7 @@ const GridItem = styled.div`
   z-index: 1;
 
   background-color: rgb(0 0 0 / 0%);
-  /* border-radius: 1.5rem; */
+  border-radius: 1.5rem;
 
   /* backdrop-filter: blur(30px); */
   position: relative;
@@ -80,12 +77,12 @@ const GridItem = styled.div`
     margin: -1px;
     pointer-events: none;
     content: '';
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.12);
     border-radius: inherit;
     /* mask-image: linear-gradient(135deg, #fff 0%, transparent 50%); */
     mask-image: linear-gradient(180deg, #fff 0%, transparent 50%);
 
-    opacity: 0;
+    opacity: 1;
 
     /* background: linear-gradient(
       to bottom,
@@ -134,10 +131,15 @@ const GridItem = styled.div`
         rgba(255, 255, 255, 0) 0%,
         rgb(42 42 42 / 5%) 100%
       ); */
-      background: linear-gradient(
+      /* background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0) 0%,
         rgb(212 195 248 / 5%) 100%
+      ); */
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgb(255 255 255 / 2%) 100%
       );
       content: '';
       height: 100%;
@@ -169,41 +171,39 @@ const GridItemLine = styled.div`
     bottom: 0;
     /* width: 948px; */
     width: 100%;
+
+    opacity: 0;
   }
 `;
 
-function SectionSkills() {
+function SectionSkillsVar2() {
   return (
     <GridItemR>
       <Section>
         <Grid>
           <GridItem>
-            {/* <TextWithBackgroundH4>Essential Skills</TextWithBackgroundH4> */}
-            <TextWithColoredBorder>Essential Skills</TextWithColoredBorder>
+            <TextWithBackgroundH4>Essential Skills</TextWithBackgroundH4>
             <ContentBox>
               Quantum Finance Group is a leading financial services firm.
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
           <GridItem>
-            {/* <TextWithBackgroundH4>Augmentable Skills</TextWithBackgroundH4> */}
-            <TextWithColoredBorder>Augmentable Skills</TextWithColoredBorder>
+            <TextWithBackgroundH4>Augmentable Skills</TextWithBackgroundH4>
             <ContentBox>
               Quantum Finance Group is a leading financial services firm.
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
           <GridItem>
-            {/* <TextWithBackgroundH4>High Impact Tools</TextWithBackgroundH4> */}
-            <TextWithColoredBorder>High Impact Tools</TextWithColoredBorder>
+            <TextWithBackgroundH4>High Impact Tools</TextWithBackgroundH4>
             <ContentBox>
               Quantum Finance Group is a leading financial services firm.
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
           <GridItem>
-            {/* <TextWithBackgroundH4>Summary</TextWithBackgroundH4> */}
-            <TextWithColoredBorder>Summary</TextWithColoredBorder>
+            <TextWithBackgroundH4>Summary</TextWithBackgroundH4>
             <ContentBox>
               Quantum Finance Group is a leading financial services firm.
             </ContentBox>
@@ -215,4 +215,4 @@ function SectionSkills() {
   );
 }
 
-export default SectionSkills;
+export default SectionSkillsVar2;
