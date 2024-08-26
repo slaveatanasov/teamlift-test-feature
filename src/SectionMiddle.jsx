@@ -5,7 +5,7 @@ import AnimatedCircularProgressBar from './NumberLoader';
 import { useEffect, useState } from 'react';
 
 import RobotImg from './assets/robot-down-arrow-graph.png';
-import { TextWithColoredBorder } from './TextWithBackground';
+import TextWithBackground from './TextWithBackground';
 const Section = styled.section``;
 const Box = styled.div`
   position: relative;
@@ -44,19 +44,35 @@ const Grid = styled.div`
 function SectionMiddle({ scoreColor }) {
   const [value, setValue] = useState(0);
 
-  // useEffect(() => {
-  //   const handleIncrement = (prev) => {
-  //     if (prev === 100) {
-  //       return 0;
-  //     }
-  //     return prev + 10;
-  //   };
-  //   setValue(handleIncrement);
-  //   const interval = setInterval(() => setValue(handleIncrement), 2000);
-  //   return () => clearInterval(interval);
-  // }, []);
+  useEffect(() => {
+    if (scoreColor === 'green') {
+      setTimeout(() => {
+        setValue(18);
+      }, 1000);
+    }
 
-  console.log('scoreColor', scoreColor);
+    if (scoreColor === 'yellow') {
+      setTimeout(() => {
+        setValue(37);
+      }, 1000);
+    }
+
+    if (scoreColor === 'red') {
+      setTimeout(() => {
+        setValue(69);
+      }, 1000);
+    }
+
+    // const handleIncrement = (prev) => {
+    //   if (prev === 100) {
+    //     return 0;
+    //   }
+    //   return prev + 10;
+    // };
+    // setValue(handleIncrement);
+    // const interval = setInterval(() => setValue(handleIncrement), 2000);
+    // return () => clearInterval(interval);
+  }, [scoreColor]);
 
   const gaugePrimaryColor =
     scoreColor === 'green'
@@ -79,13 +95,13 @@ function SectionMiddle({ scoreColor }) {
             {scoreColor === 'red' && <ImgIllRed src={RobotImg} width="100px" />}
           </Box>
           <Box>
-            Quantum Finance Group is a leading financial services firm. Quantum
-            Finance Group is a leading financial services firm.
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua."
           </Box>
           <AnimatedCircularProgressBar
             max={100}
             min={0}
-            value={69}
+            value={value}
             gaugePrimaryColor={gaugePrimaryColor}
             gaugeSecondaryColor="rgba(255, 255, 255, 0.04)"
             className="test"

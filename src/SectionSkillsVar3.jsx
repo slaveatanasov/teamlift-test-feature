@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled from 'styled-components';
 import {
   TextWithBackgroundH4,
@@ -70,12 +71,15 @@ const GridItemR = styled.div`
   background-color: rgb(0 0 0 / 0%);
   border-radius: 1.5rem;
 
-  background-color: rgb(18 14 14 / 71%);
+  background-color: rgb(9 9 9 / 65%);
+  background-color: rgb(9 9 9 / 0%);
 
   /* box-shadow: rgb(99 99 99 / 20%) 0px 0px 11px 0px; */
+  /* box-shadow: rgb(80 92 95 / 10%) 0px 0px 10px 0px; */
 
   /* backdrop-filter: blur(30px); */
   position: relative;
+  overflow: hidden;
   &:before {
     position: absolute;
     top: 0;
@@ -88,6 +92,7 @@ const GridItemR = styled.div`
     border: 1.5px solid rgba(255, 255, 255, 0.12);
     border-radius: inherit;
     /* mask-image: linear-gradient(135deg, #fff 0%, transparent 50%); */
+    mask-image: linear-gradient(235deg, #fff 0%, transparent 50%);
   }
 `;
 
@@ -101,7 +106,6 @@ const GridItem = styled.div`
   position: relative;
 
   padding: 1rem 1.5rem 1rem 1.5rem;
-  overflow: hidden;
 
   &:before {
     position: absolute;
@@ -180,7 +184,6 @@ const GridItem = styled.div`
       top: 0;
       transition: 0.5s cubic-bezier(0.6, 0.6, 0, 1) opacity;
       width: 100%;
-      /* border-radius: 1.5rem; */
     }
   }
 `;
@@ -228,14 +231,22 @@ const OverlayContent = styled.div`
 `;
 
 const CloseButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #ffffffb8;
+  transition: color 0.2s;
   cursor: pointer;
-  /* border-radius: 1.5rem; */
   position: absolute;
   top: 1.5rem;
   right: 2rem;
+
+  &:hover {
+    color: #fff;
+  }
 `;
 
-function SectionSkills() {
+function SectionSkillsVar3() {
   const [showDetails, setShowDetails] = useState(false);
   const [showDetails2, setShowDetails2] = useState(false);
   const [showDetails3, setShowDetails3] = useState(false);
@@ -259,8 +270,8 @@ function SectionSkills() {
             aesthetics, typography, color schemes, and overall user experience.
             - They use tools like Sketch, Figma, or Adobe XD to create
             wireframes and prototypes¹.
-          </OverlayContent> */}
-          {/* <CloseButton onClick={() => toggleOpen(false)}>Close</CloseButton> */}
+          </OverlayContent>
+          <CloseButton onClick={() => toggleOpen(false)}>Close</CloseButton> */}
         </motion.div>
       </motion.div>
       <Section>
@@ -324,7 +335,11 @@ function SectionSkills() {
               <ClickableSkill>
                 <TextWithColoredBorder>+ 1 more</TextWithColoredBorder>
               </ClickableSkill>
-              {showDetails2 && <DetailsButton>See Details</DetailsButton>}
+              {showDetails2 && (
+                <DetailsButton onClick={() => toggleOpen(true)}>
+                  See Details
+                </DetailsButton>
+              )}
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
@@ -351,13 +366,16 @@ function SectionSkills() {
               <ClickableSkill>
                 <TextWithColoredBorder>+ 3 more</TextWithColoredBorder>
               </ClickableSkill>
-              {showDetails3 && <DetailsButton>See Details</DetailsButton>}
+              {showDetails3 && (
+                <DetailsButton onClick={() => toggleOpen(true)}>
+                  See Details
+                </DetailsButton>
+              )}
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
           <GridItem>
             {/* <TextWithBackgroundH4>Summary</TextWithBackgroundH4> */}
-            <TextWithColoredBorder>Summary</TextWithColoredBorder>
             <ContentBox>
               Quantum Finance Group is a leading financial services firm.
             </ContentBox>
@@ -369,4 +387,4 @@ function SectionSkills() {
   );
 }
 
-export default SectionSkills;
+export default SectionSkillsVar3;

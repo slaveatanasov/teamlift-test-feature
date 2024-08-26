@@ -6,12 +6,18 @@ import SectionJobPosting from './SectionJobPosting';
 import { CustomScroll } from 'react-custom-scroll';
 import SectionSkills from './SectionSkills';
 import SectionSkillsVar2 from './SectionSkillsVar2';
+import SectionSkillsVar3 from './SectionSkillsVar3';
 import SectionMiddle from './SectionMiddle';
+import { TextWithBackground2 } from './TextWithBackground';
+
+import { useState } from 'react';
+
 const Container = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 const ContentBox = styled.div`
@@ -145,23 +151,59 @@ const BackgroundAttachedImage2Red = styled.img`
 const Grid = styled.div`
   height: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-template-columns: 1.5fr 1fr 1.25fr;
   grid-template-rows: 1fr;
   /* gap: 2rem 2rem; */
   grid-template-areas: 'JobListing MidSection Details';
 `;
 
+const TitleAndOptions = styled.div`
+  justify-self: flex-start;
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+  margin-left: 5rem;
+  display: flex;
+  gap: 3rem;
+`;
+
+const Tabs = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+const Tab = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #ffffffb8;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #fff;
+  }
+`;
+
 function MainContainer() {
-  const scoreColor = 'green';
+  const [scoreColor, setScoreColor] = useState('green');
+
   return (
     <Container>
+      <TitleAndOptions>
+        <TextWithBackground2>AI REPORT</TextWithBackground2>
+        <Tabs>
+          <Tab onClick={() => setScoreColor('green')}>Green</Tab>
+          <Tab onClick={() => setScoreColor('yellow')}>Yellow</Tab>
+          <Tab onClick={() => setScoreColor('red')}>Red</Tab>
+        </Tabs>
+      </TitleAndOptions>
       <ContentBox>
         <Grid>
           <CustomScroll>
             <SectionJobPosting scoreColor={scoreColor} />
           </CustomScroll>
           <SectionMiddle scoreColor={scoreColor} />
-          <SectionSkills scoreColor={scoreColor} />
+          <SectionSkillsVar3 scoreColor={scoreColor} />
         </Grid>
       </ContentBox>
       {scoreColor === 'green' && (

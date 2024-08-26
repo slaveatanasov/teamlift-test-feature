@@ -12,6 +12,18 @@ const TextH1 = styled.h1`
   display: block;
 `;
 
+const BigText = styled.h1`
+  margin: 0;
+  /* background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%); */
+  /* background: linear-gradient(180deg, #000000 0%, rgb(217 210 210 / 70%) 100%); */
+  background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  font-size: 40px;
+`;
+
 const TextH4 = styled.h4`
   margin: 0;
   background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
@@ -55,13 +67,17 @@ const TextSpan = styled.span`
     mask-composite: xor;
     mask-composite: exclude;
     padding: 1px;
-    pointer-events: none;
+    /* pointer-events: none; */
     position: absolute;
   }
 `;
 
-function TextWithBackground({ children }) {
+export function TextWithBackground({ children }) {
   return <TextH1>{children}</TextH1>;
+}
+
+export function TextWithBackground2({ children }) {
+  return <BigText>{children}</BigText>;
 }
 
 export function TextWithBackgroundH4({ children }) {
