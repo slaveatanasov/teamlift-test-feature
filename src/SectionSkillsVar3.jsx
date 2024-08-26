@@ -30,11 +30,11 @@ const sidebar = {
 };
 
 const Section = styled.section`
-  height: 100%;
+  height: 96%;
 `;
 
 const ContentBox = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 10px;
   font-size: 14px;
   color: rgba(239, 237, 253, 0.7);
   display: flex;
@@ -44,6 +44,7 @@ const ContentBox = styled.div`
 
 const ClickableSkill = styled.div`
   cursor: pointer;
+  z-index: 2;
 `;
 
 const Grid = styled.div`
@@ -87,9 +88,8 @@ const GridItemR = styled.div`
     bottom: 0;
     left: 0;
     margin: -1px;
-    /* pointer-events: none; */
     content: '';
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    /* border: 1.5px solid rgba(255, 255, 255, 0.12); */
     border-radius: inherit;
     /* mask-image: linear-gradient(135deg, #fff 0%, transparent 50%); */
     mask-image: linear-gradient(235deg, #fff 0%, transparent 50%);
@@ -105,7 +105,7 @@ const GridItem = styled.div`
   /* backdrop-filter: blur(30px); */
   position: relative;
 
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 1rem;
 
   &:before {
     position: absolute;
@@ -114,7 +114,6 @@ const GridItem = styled.div`
     bottom: 0;
     left: 0;
     margin: -1px;
-    /* pointer-events: none; */
     content: '';
     border: 1.5px solid rgba(255, 255, 255, 0.12);
     border-radius: inherit;
@@ -151,7 +150,6 @@ const GridItem = styled.div`
     height: 100%;
     left: 0;
     opacity: 0;
-    /* pointer-events: none; */
     position: absolute;
     top: 0;
     transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) opacity;
@@ -179,7 +177,6 @@ const GridItem = styled.div`
       height: 100%;
       left: 0;
       opacity: 1;
-      /* pointer-events: none; */
       position: absolute;
       top: 0;
       transition: 0.5s cubic-bezier(0.6, 0.6, 0, 1) opacity;
@@ -228,9 +225,17 @@ const DetailsButton = styled.div`
 
 const OverlayContent = styled.div`
   padding: 5rem 3rem 3rem;
+  /* background: linear-gradient(180deg, rgb(0 0 0) 80%, rgb(0 0 0 / 0%) 100%); */
+  /* background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 8%) 80%,
+    rgb(0 0 0 / 0%) 100%
+  ); */
+
+  background: linear-gradient(90deg, rgb(0 0 0) 80%, rgb(0 0 0 / 0%) 100%);
 `;
 
-const CloseButton = styled.button`
+const OverlayCloseButton = styled.button`
   background: none;
   border: none;
   font-size: 1rem;
@@ -264,14 +269,26 @@ function SectionSkillsVar3() {
         ref={containerRef}
       >
         <motion.div className="background" variants={sidebar}>
-          {/* <OverlayContent>
-            1. **Web Design**: - Web design involves creating visually appealing
-            and user-friendly layouts for websites. Designers focus on
-            aesthetics, typography, color schemes, and overall user experience.
-            - They use tools like Sketch, Figma, or Adobe XD to create
-            wireframes and prototypes¹.
+          <OverlayContent>
+            <div>
+              {' '}
+              1. Web design involves creating visually appealing and
+              user-friendly layouts for websites. Designers focus on aesthetics,
+              typography, color schemes, and overall user experience. - They use
+              tools like Sketch, Figma, or Adobe XD to create wireframes and
+              prototypes.
+            </div>
+            <p>
+              2. ChatGPT (Chat Generative Pre-trained Transformer) is a natural
+              language processing chatbot powered by the GPT family of large
+              language models. It helps users get answers, find inspiration, and
+              be more productive by assisting with writing, learning,
+              brainstorming, and more.
+            </p>
           </OverlayContent>
-          <CloseButton onClick={() => toggleOpen(false)}>Close</CloseButton> */}
+          <OverlayCloseButton onClick={() => toggleOpen(false)}>
+            Close
+          </OverlayCloseButton>
         </motion.div>
       </motion.div>
       <Section>
@@ -285,24 +302,18 @@ function SectionSkillsVar3() {
             }}
           >
             <TextWithBackgroundH4>Essential Skills</TextWithBackgroundH4>
-            {/* <TextWithColoredBorder>Essential Skills</TextWithColoredBorder> */}
             <ContentBox>
               <ClickableSkill>
                 <TextWithColoredBorder>Web Design</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
-                <TextWithColoredBorder>Web Dev</TextWithColoredBorder>
-              </ClickableSkill>
-              <ClickableSkill>
-                <TextWithColoredBorder>
-                  Frontend Development
-                </TextWithColoredBorder>
+                <TextWithColoredBorder>Frontend Dev</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
                 <TextWithColoredBorder>Backend Dev</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
-                <TextWithColoredBorder>Adobe</TextWithColoredBorder>
+                <TextWithColoredBorder>Webflow</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
                 <TextWithColoredBorder>+ 2 more</TextWithColoredBorder>
@@ -324,13 +335,15 @@ function SectionSkillsVar3() {
             }}
           >
             <TextWithBackgroundH4>Augmentable Skills</TextWithBackgroundH4>
-            {/* <TextWithColoredBorder>Augmentable Skills</TextWithColoredBorder> */}
             <ContentBox>
               <ClickableSkill>
                 <TextWithColoredBorder>Web Design</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
                 <TextWithColoredBorder>Web Dev</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Database</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
                 <TextWithColoredBorder>+ 1 more</TextWithColoredBorder>
@@ -352,16 +365,15 @@ function SectionSkillsVar3() {
             }}
           >
             <TextWithBackgroundH4>High Impact Tools</TextWithBackgroundH4>
-            {/* <TextWithColoredBorder>High Impact Tools</TextWithColoredBorder> */}
             <ContentBox>
               <ClickableSkill>
-                <TextWithColoredBorder>Excel</TextWithColoredBorder>
+                <TextWithColoredBorder>Wordpress</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
-                <TextWithColoredBorder>Salesforce</TextWithColoredBorder>
+                <TextWithColoredBorder>ChatGPT</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
-                <TextWithColoredBorder>SAP</TextWithColoredBorder>
+                <TextWithColoredBorder>Claude</TextWithColoredBorder>
               </ClickableSkill>
               <ClickableSkill>
                 <TextWithColoredBorder>+ 3 more</TextWithColoredBorder>
@@ -375,9 +387,10 @@ function SectionSkillsVar3() {
             <GridItemLine></GridItemLine>
           </GridItem>
           <GridItem>
-            {/* <TextWithBackgroundH4>Summary</TextWithBackgroundH4> */}
+            <TextWithBackgroundH4>Our advice</TextWithBackgroundH4>
             <ContentBox>
-              Quantum Finance Group is a leading financial services firm.
+              Stay up-to-date with industry trends and emerging technologies by
+              incorporating AI tools.
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>

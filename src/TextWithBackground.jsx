@@ -67,7 +67,6 @@ const TextSpan = styled.span`
     mask-composite: xor;
     mask-composite: exclude;
     padding: 1px;
-    /* pointer-events: none; */
     position: absolute;
   }
 `;

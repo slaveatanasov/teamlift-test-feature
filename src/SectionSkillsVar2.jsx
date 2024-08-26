@@ -3,14 +3,41 @@ import {
   TextWithBackgroundH4,
   TextWithColoredBorder,
 } from './TextWithBackground';
+import { useRef, useState } from 'react';
+import { useDimensions } from './useDimensions';
+import { motion } from 'framer-motion';
+
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    transition: {
+      type: 'spring',
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: 'circle(0px at 40px 40px)',
+    transition: {
+      // delay: 0.5,
+      type: 'spring',
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
 const Section = styled.section`
   height: 100%;
 `;
 
 const ContentBox = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 10px;
   font-size: 14px;
   color: rgba(239, 237, 253, 0.7);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 `;
 
 const Grid = styled.div`
@@ -48,7 +75,6 @@ const GridItemR = styled.div`
     bottom: 0;
     left: 0;
     margin: -1px;
-    pointer-events: none;
     content: '';
     /* border: 1.5px solid rgba(255, 255, 255, 0.12); */
     border-radius: inherit;
@@ -75,7 +101,6 @@ const GridItem = styled.div`
     bottom: 0;
     left: 0;
     margin: -1px;
-    pointer-events: none;
     content: '';
     border: 2px solid rgba(255, 255, 255, 0.12);
     border-radius: inherit;
@@ -112,7 +137,6 @@ const GridItem = styled.div`
     height: 100%;
     left: 0;
     opacity: 0;
-    pointer-events: none;
     position: absolute;
     top: 0;
     transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) opacity;
@@ -145,7 +169,6 @@ const GridItem = styled.div`
       height: 100%;
       left: 0;
       opacity: 1;
-      pointer-events: none;
       position: absolute;
       top: 0;
       transition: 0.5s cubic-bezier(0.6, 0.6, 0, 1) opacity;
@@ -176,36 +199,196 @@ const GridItemLine = styled.div`
   }
 `;
 
+const DetailsButton = styled.div`
+  cursor: pointer;
+  z-index: 2;
+
+  padding: 0 1rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  transition: color 0.2s;
+
+  &:hover {
+    /* background-color: #2e2e4a66; */
+    color: rgb(239 237 253 / 85%);
+    border-radius: 1rem;
+  }
+`;
+
+const OverlayContent = styled.div`
+  padding: 5rem 3rem 3rem;
+  /* background: linear-gradient(180deg, rgb(0 0 0) 80%, rgb(0 0 0 / 0%) 100%); */
+  /* background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 8%) 80%,
+    rgb(0 0 0 / 0%) 100%
+  ); */
+
+  /* background: linear-gradient(90deg, rgb(0 0 0) 80%, rgb(0 0 0 / 0%) 100%); */
+`;
+
+const OverlayCloseButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #ffffffb8;
+  transition: color 0.2s;
+  cursor: pointer;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+
+  &:hover {
+    color: #fff;
+  }
+`;
+
+const ClickableSkill = styled.div`
+  cursor: pointer;
+  z-index: 2;
+`;
+
 function SectionSkillsVar2() {
+  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails2, setShowDetails2] = useState(false);
+  const [showDetails3, setShowDetails3] = useState(false);
+
+  const [isOpen, toggleOpen] = useState(false);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
   return (
     <GridItemR>
+      <motion.div
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        custom={height}
+        ref={containerRef}
+      >
+        <motion.div className="backgroundForVar1" variants={sidebar}>
+          <OverlayContent>
+            <div>
+              {' '}
+              1. Web design involves creating visually appealing and
+              user-friendly layouts for websites. Designers focus on aesthetics,
+              typography, color schemes, and overall user experience. - They use
+              tools like Sketch, Figma, or Adobe XD to create wireframes and
+              prototypes.
+            </div>
+            <p>
+              2. ChatGPT (Chat Generative Pre-trained Transformer) is a natural
+              language processing chatbot powered by the GPT family of large
+              language models. It helps users get answers, find inspiration, and
+              be more productive by assisting with writing, learning,
+              brainstorming, and more.
+            </p>
+          </OverlayContent>
+          <OverlayCloseButton onClick={() => toggleOpen(false)}>
+            Close
+          </OverlayCloseButton>
+        </motion.div>
+      </motion.div>
       <Section>
         <Grid>
-          <GridItem>
+          <GridItem
+            onMouseEnter={() => {
+              setShowDetails(true);
+            }}
+            onMouseLeave={() => {
+              setShowDetails(false);
+            }}
+          >
             <TextWithBackgroundH4>Essential Skills</TextWithBackgroundH4>
             <ContentBox>
-              Quantum Finance Group is a leading financial services firm.
+              <ClickableSkill>
+                <TextWithColoredBorder>Web Design</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Frontend Dev</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Backend Dev</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Webflow</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>+ 2 more</TextWithColoredBorder>
+              </ClickableSkill>
+              {showDetails && (
+                <DetailsButton onClick={() => toggleOpen(true)}>
+                  See Details
+                </DetailsButton>
+              )}
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
-          <GridItem>
+          <GridItem
+            onMouseEnter={() => {
+              setShowDetails2(true);
+            }}
+            onMouseLeave={() => {
+              setShowDetails2(false);
+            }}
+          >
             <TextWithBackgroundH4>Augmentable Skills</TextWithBackgroundH4>
             <ContentBox>
-              Quantum Finance Group is a leading financial services firm.
+              <ClickableSkill>
+                <TextWithColoredBorder>Web Design</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Web Dev</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Database</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>+ 1 more</TextWithColoredBorder>
+              </ClickableSkill>
+              {showDetails2 && (
+                <DetailsButton onClick={() => toggleOpen(true)}>
+                  See Details
+                </DetailsButton>
+              )}
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
-          <GridItem>
+          <GridItem
+            onMouseEnter={() => {
+              setShowDetails3(true);
+            }}
+            onMouseLeave={() => {
+              setShowDetails3(false);
+            }}
+          >
             <TextWithBackgroundH4>High Impact Tools</TextWithBackgroundH4>
             <ContentBox>
-              Quantum Finance Group is a leading financial services firm.
+              <ClickableSkill>
+                <TextWithColoredBorder>Wordpress</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>ChatGPT</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>Claude</TextWithColoredBorder>
+              </ClickableSkill>
+              <ClickableSkill>
+                <TextWithColoredBorder>+ 3 more</TextWithColoredBorder>
+              </ClickableSkill>
+              {showDetails3 && (
+                <DetailsButton onClick={() => toggleOpen(true)}>
+                  See Details
+                </DetailsButton>
+              )}
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>
           <GridItem>
-            <TextWithBackgroundH4>Summary</TextWithBackgroundH4>
+            <TextWithBackgroundH4>Our advice</TextWithBackgroundH4>
             <ContentBox>
-              Quantum Finance Group is a leading financial services firm.
+              Stay up-to-date with industry trends and emerging technologies by
+              incorporating AI tools.
             </ContentBox>
             <GridItemLine></GridItemLine>
           </GridItem>

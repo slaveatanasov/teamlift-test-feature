@@ -19,80 +19,86 @@ function SectionJobPosting() {
   return (
     <GridItemL>
       <JobPostingSection>
-        <TextWithBackground>Financial Analyst</TextWithBackground>
+        <TextWithBackground>Web Developer</TextWithBackground>
         {/* <H1>Financial Analyst</H1> */}
         <p>
-          <strong>Company:</strong> Quantum Finance Group
+          <strong>Company:</strong> Quantum Web Solutions
         </p>
         <p>
           <strong>Location:</strong> Seattle, WA
         </p>
-
         <h2>About Us</h2>
         <p>
-          Quantum Finance Group is a leading financial services firm
-          specializing in investment management and risk analysis. With a
-          commitment to innovation and excellence, we empower our clients to
-          make informed financial decisions.
+          Quantum Web Solutions is a dynamic and innovative web development
+          agency committed to creating exceptional digital experiences. We
+          specialize in building responsive websites, web applications, and
+          e-commerce platforms that engage users and drive results.
         </p>
-
         <h2>Responsibilities</h2>
         <ul>
           <li>
-            Conduct financial modeling, variance analysis, and budgeting for
-            investment portfolios.
+            Collaborate with designers and project managers to create visually
+            appealing and functional websites.
           </li>
           <li>
-            Analyze market trends, assess risk, and recommend strategic
-            adjustments.
+            Develop and maintain web applications using HTML, CSS, JavaScript,
+            and other relevant technologies.
           </li>
           <li>
-            Collaborate with portfolio managers, traders, and research teams to
-            optimize investment strategies.
+            Optimize website performance, ensuring fast load times and smooth
+            user interactions.
           </li>
           <li>
-            Prepare comprehensive reports and presentations for executive
-            leadership.
+            Implement responsive design principles to ensure compatibility
+            across various devices and screen sizes.
           </li>
           <li>
-            Monitor KPIs, track performance metrics, and identify growth
-            opportunities.
+            Troubleshoot and debug issues, ensuring cross-browser compatibility.
+          </li>
+          <li>
+            Stay up-to-date with industry trends and emerging technologies.
           </li>
         </ul>
-
         <h2>Qualifications</h2>
         <ul>
-          <li>Bachelor's degree in Finance, Accounting, or related field.</li>
           <li>
-            Minimum 5 years of experience as a Financial Analyst in asset
-            management.
+            Bachelor’s degree in Computer Science, Web Development, or related
+            field.
+          </li>
+          <li>Proficiency in HTML, CSS, and JavaScript.</li>
+          <li>
+            Experience with front-end frameworks (e.g., React, Angular, Vue.js).
           </li>
           <li>
-            Proficiency in Excel, Bloomberg, and financial modeling tools.
+            Knowledge of back-end technologies (e.g., Node.js, Python, Ruby on
+            Rails).
           </li>
-          <li>Strong analytical skills with attention to detail.</li>
-          <li>Excellent communication and interpersonal abilities.</li>
+          <li>Familiarity with version control systems (e.g., Git).</li>
+          <li>Strong problem-solving skills and attention to detail.</li>
+          <li>Excellent communication and teamwork abilities.</li>
         </ul>
-
         <h2>Preferred Qualifications</h2>
         <ul>
-          <li>Master's degree in Finance or CFA designation.</li>
-          <li>Experience in fixed income or equity analysis.</li>
-          <li>Advanced Excel skills (pivot tables, macros, VBA).</li>
+          <li>
+            Experience with responsive design and mobile-first development.
+          </li>
+          <li>Knowledge of SEO best practices.</li>
+          <li>Understanding of web security principles.</li>
+          <li>Portfolio showcasing previous web development projects.</li>
         </ul>
-
         <h2>Benefits</h2>
         <ul>
           <li>Competitive salary and performance-based bonuses.</li>
-          <li>Comprehensive health coverage and retirement plans.</li>
+          <li>Health and wellness programs.</li>
           <li>Professional development opportunities.</li>
+          <li>Fun and collaborative work environment.</li>
         </ul>
-
+        <h2>How to Apply</h2>
         <p>
-          How to Apply: Interested candidates should submit their resume and a
-          cover letter highlighting their relevant experience to{' '}
-          <a href="mailto:jobs@quantumfinancegroup.com">
-            jobs@quantumfinancegroup.com
+          Interested candidates should submit their resume, cover letter, and
+          portfolio to{' '}
+          <a href="mailto:careers@quantumwebsolutions.com">
+            careers@quantumwebsolutions.com
           </a>
           .
         </p>

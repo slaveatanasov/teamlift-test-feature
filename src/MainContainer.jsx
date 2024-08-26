@@ -20,6 +20,12 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+const Subcontainer = styled.div`
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+`;
+
 const ContentBox = styled.div`
   z-index: 1;
   width: 1060px;
@@ -31,6 +37,7 @@ const ContentBox = styled.div`
 
   backdrop-filter: blur(30px);
   position: relative;
+
   &:before {
     position: absolute;
     top: 0;
@@ -161,9 +168,9 @@ const TitleAndOptions = styled.div`
   justify-self: flex-start;
   margin-bottom: 0.5rem;
   align-self: flex-start;
-  margin-left: 5rem;
   display: flex;
   gap: 3rem;
+  justify-content: space-between;
 `;
 
 const Tabs = styled.div`
@@ -189,41 +196,49 @@ function MainContainer() {
 
   return (
     <Container>
-      <TitleAndOptions>
-        <TextWithBackground2>AI REPORT</TextWithBackground2>
-        <Tabs>
-          <Tab onClick={() => setScoreColor('green')}>Green</Tab>
-          <Tab onClick={() => setScoreColor('yellow')}>Yellow</Tab>
-          <Tab onClick={() => setScoreColor('red')}>Red</Tab>
-        </Tabs>
-      </TitleAndOptions>
-      <ContentBox>
-        <Grid>
-          <CustomScroll>
-            <SectionJobPosting scoreColor={scoreColor} />
-          </CustomScroll>
-          <SectionMiddle scoreColor={scoreColor} />
-          <SectionSkillsVar3 scoreColor={scoreColor} />
-        </Grid>
-      </ContentBox>
-      {scoreColor === 'green' && (
-        <BackgroundAttachedImageGreen src={bgCardImage1} />
-      )}
-      {scoreColor === 'yellow' && (
-        <BackgroundAttachedImageYellow src={bgCardImage1} />
-      )}
-      {scoreColor === 'red' && (
-        <BackgroundAttachedImageRed src={bgCardImage1} />
-      )}
-      {scoreColor === 'green' && (
-        <BackgroundAttachedImage2Green src={bgCardImage1} />
-      )}
-      {scoreColor === 'yellow' && (
-        <BackgroundAttachedImage2Yellow src={bgCardImage1} />
-      )}
-      {scoreColor === 'red' && (
-        <BackgroundAttachedImage2Red src={bgCardImage1} />
-      )}
+      <Subcontainer>
+        <TitleAndOptions>
+          <TextWithBackground2>TEAMLIFT REPORT</TextWithBackground2>
+          <Tabs>
+            <Tab onClick={() => setScoreColor('green')}>Green</Tab>
+            <Tab onClick={() => setScoreColor('yellow')}>Yellow</Tab>
+            <Tab onClick={() => setScoreColor('red')}>Red</Tab>
+          </Tabs>
+        </TitleAndOptions>
+        <ContentBox>
+          <Grid>
+            <CustomScroll>
+              <SectionJobPosting scoreColor={scoreColor} />
+            </CustomScroll>
+            <SectionMiddle scoreColor={scoreColor} />
+            {scoreColor === 'green' && (
+              <SectionSkillsVar3 scoreColor={scoreColor} />
+            )}
+            {scoreColor === 'yellow' && (
+              <SectionSkillsVar2 scoreColor={scoreColor} />
+            )}
+            {scoreColor === 'red' && <SectionSkills scoreColor={scoreColor} />}
+          </Grid>
+        </ContentBox>
+        {scoreColor === 'green' && (
+          <BackgroundAttachedImageGreen src={bgCardImage1} />
+        )}
+        {scoreColor === 'yellow' && (
+          <BackgroundAttachedImageYellow src={bgCardImage1} />
+        )}
+        {scoreColor === 'red' && (
+          <BackgroundAttachedImageRed src={bgCardImage1} />
+        )}
+        {scoreColor === 'green' && (
+          <BackgroundAttachedImage2Green src={bgCardImage1} />
+        )}
+        {scoreColor === 'yellow' && (
+          <BackgroundAttachedImage2Yellow src={bgCardImage1} />
+        )}
+        {scoreColor === 'red' && (
+          <BackgroundAttachedImage2Red src={bgCardImage1} />
+        )}
+      </Subcontainer>
     </Container>
   );
 }

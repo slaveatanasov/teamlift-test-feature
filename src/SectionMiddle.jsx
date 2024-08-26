@@ -5,6 +5,7 @@ import AnimatedCircularProgressBar from './NumberLoader';
 import { useEffect, useState } from 'react';
 
 import RobotImg from './assets/robot-down-arrow-graph.png';
+import TeamoImg from './assets/66b33f6a64bf87e239c61eba_heroimageteamo.png';
 import TextWithBackground from './TextWithBackground';
 const Section = styled.section``;
 const Box = styled.div`
@@ -12,6 +13,10 @@ const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const ImgTeamo = styled.img`
+  /* filter: hue-rotate(128deg); */
 `;
 
 const ImgIllGreen = styled.img`
@@ -86,6 +91,7 @@ function SectionMiddle({ scoreColor }) {
       <Section>
         <Grid>
           <Box>
+            <ImgTeamo src={TeamoImg} width="100px" />
             {scoreColor === 'green' && (
               <ImgIllGreen src={RobotImg} width="100px" />
             )}
